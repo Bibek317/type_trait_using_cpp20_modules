@@ -45,6 +45,9 @@ target_sources(meta
         modules/transformations/remove_all_pointer.cpp
         modules/transformations/remove_const.cpp
         modules/transformations/remove_ref.cpp
+        modules/transformations/remove_cv.cpp
+        modules/transformations/remove_cvref.cpp
+        
         
 
         modules/meta.cppm

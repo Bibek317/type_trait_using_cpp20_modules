@@ -21,3 +21,6 @@ export import meta.transformations.remove_pointer;
 export import meta.transformations.remove_all_pointer;
 export import meta.transformations.remove_const;
 export import meta.transformations.remove_ref;
+export import meta.transformations.remove_cv;
+export import meta.transformations.remove_cvref;
+
