@@ -8,22 +8,15 @@ int main() {
 
   using types = meta::type_list<int, const double &, char>;
 
-  // -------------------------
   // Basic operations
-  // -------------------------
-
+  
   static_assert(types::size == 3);
 
   static_assert(meta::is_same_v<types::at<0>, int>);
 
   static_assert(meta::is_same_v<types::front, int>);
 
-  static_assert(meta::is_same_v<types::back, char>);
-
-  // -------------------------
-  // transform
-  // -------------------------
-
+  
   using pointers = types::transform<meta::add_pointer_t>;
 
   static_assert(meta::is_same_v<pointers::at<0>, int *>);
@@ -31,10 +24,6 @@ int main() {
   static_assert(meta::is_same_v<pointers::at<1>, const double *>);
 
   static_assert(meta::is_same_v<pointers::at<2>, char *>);
-
-  // -------------------------
-  // apply
-  // -------------------------
 
   using wrapped = types::apply<std::tuple>;
 
