@@ -24,6 +24,6 @@ export namespace meta {
     };
     
     template<typename T>
-    using remove_cv_t =typename remove_cv<T>::type;
+    using remove_cv_t = typename remove_cv<T>::type;
     
 }

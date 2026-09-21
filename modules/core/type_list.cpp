@@ -9,5 +9,16 @@ export namespace meta{
         
         template<auto N>
         using at = Ts...[N];
+        
+        using front = at<0>;
+        using back = at<size - 1>;
+        
+        
+        template<template<typename...> typename F>
+        using transform = type_list<F<Ts>...>;
+        
+        template<template<typename...> typename F>
+        using apply = F<Ts...>;
+        
     };
 }

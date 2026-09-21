@@ -1,26 +1,46 @@
 import meta;
 
 #include <iostream>
+#include <print>
+#include <concepts>
 
 int main() {
 
-  static_assert(meta::is_same_v<int, int>);
-  static_assert(!meta::is_same_v<int, float>);
+  using types = meta::type_list<int, const double &, char>;
 
-  static_assert(meta::is_same_v<meta::type_identity_t<int>, int>);
+  // -------------------------
+  // Basic operations
+  // -------------------------
 
-  std::cout << "All compile-time tests passed!\n";
-  
-  int arr[5] = {1,2,3,4,5};
+  static_assert(types::size == 3);
 
-  if (meta::is_array_v<decltype(arr)>) {
-    std::cout << "It's array\n";
-  }
+  static_assert(meta::is_same_v<types::at<0>, int>);
 
-  bool is_same = meta::is_same_v<int, meta::remove_cvref_t<volatile const int&&>>;
-  std::println("is it int after removing cvref qualifier=> {}", is_same);
+  static_assert(meta::is_same_v<types::front, int>);
 
-  meta::remove_pointer_t<int *> x = 50;
-  std::println("The value of x is {}", x);
-  
+  static_assert(meta::is_same_v<types::back, char>);
+
+  // -------------------------
+  // transform
+  // -------------------------
+
+  using pointers = types::transform<meta::add_pointer_t>;
+
+  static_assert(meta::is_same_v<pointers::at<0>, int *>);
+
+  static_assert(meta::is_same_v<pointers::at<1>, const double *>);
+
+  static_assert(meta::is_same_v<pointers::at<2>, char *>);
+
+  // -------------------------
+  // apply
+  // -------------------------
+
+  using wrapped = types::apply<std::tuple>;
+
+  static_assert(
+      meta::is_same_v<wrapped, std::tuple<int, const double &, char>>);
+
+  std::println("type_list tests passed!");
+ 
 }

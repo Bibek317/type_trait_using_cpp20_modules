@@ -23,4 +23,9 @@ export import meta.transformations.remove_const;
 export import meta.transformations.remove_ref;
 export import meta.transformations.remove_cv;
 export import meta.transformations.remove_cvref;
+export import meta.transformations.add_pointer;
+export import meta.transformations.add_lvalue_ref;
+export import meta.transformations.add_rvalue_ref;
+export import meta.transformations.add_cvref;
+export import meta.transformations.add_cv;
 

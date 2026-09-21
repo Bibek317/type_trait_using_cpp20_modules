@@ -47,6 +47,12 @@ target_sources(meta
         modules/transformations/remove_ref.cpp
         modules/transformations/remove_cv.cpp
         modules/transformations/remove_cvref.cpp
+        modules/transformations/add_pointer.cpp
+        modules/transformations/add_lvalue_refrence.cpp
+        modules/transformations/add_rvalue_refrence.cpp
+        modules/transformations/add_cv.cpp
+        modules/transformations/add_cvref.cpp
+        
         
         
 
@@ -58,7 +64,21 @@ add_executable(app
     main.cpp
 )
 
+target_compile_options( app PRIVATE 
+	-w
+    #-D__ANDROID_API__=30
+)
+
 # Allow app to use meta modules
 target_link_libraries(app
     PRIVATE meta
+)
+
+# Enable CTest
+enable_testing()
+
+# Register the executable as a test
+add_test(
+    NAME meta_traits_test
+    COMMAND app
 )
