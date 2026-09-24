@@ -27,6 +27,8 @@ target_sources(meta
         modules/core/bool_constant.cppm
         modules/core/type_identity.cppm
         modules/core/type_list.cpp
+        modules/core/value_list.cpp
+        
 
         modules/comparison/is_same.cppm
         

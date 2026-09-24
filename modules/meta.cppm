@@ -4,6 +4,7 @@ export import meta.core.integral_constant;
 export import meta.core.bool_constant;
 export import meta.core.type_identity;
 export import meta.core.type_list;
+export import meta.core.value_list;
 
 export import meta.comparison.is_same;
 
